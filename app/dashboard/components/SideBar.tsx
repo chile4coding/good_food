@@ -18,7 +18,7 @@ const menuItems = [
   {
     label: "Dashboard",
     icon: LayoutDashboardIcon,
-    href: "/dashboard",
+    href: "/",
   },
   {
     label: "Food Order",
@@ -133,6 +133,8 @@ export default function Sidebar() {
                   active={pathname === item.href}
                   onMouseEnter={() => setHoveredMenu(item.href)}
                   onMouseLeave={() => setHoveredMenu(null)}
+                  c={pathname === item.href ? "#5A6ACF" : "#868E96"}
+                  bg={pathname === item.href ? "#E4E7F4" : "transparent"}
                   styles={{
                     root: {
                       padding: "10px",
@@ -141,10 +143,10 @@ export default function Sidebar() {
                       color: hoveredMenu === item.href ? "#5A6ACF" : "#868E96",
                       backgroundColor:
                         hoveredMenu === item.href ? " #E4E7F4" : "transparent",
-                      "&[dataActive]": {
-                        backgroundColor: "E4E7F4F",
-                        color: "#5A6ACF",
-                        fontWeight: 600,
+                      "&[data-active]": {
+                        backgroundColor: "#E4E7F4 !important",
+                        color: "#5A6ACF !important",
+                        fontWeight: "600 !important",
                       },
                     },
                     label: {
@@ -195,9 +197,9 @@ export default function Sidebar() {
                       backgroundColor:
                         hoveredOther === item.href ? " #E4E7F4" : "transparent",
                       "&[data-active]": {
-                        backgroundColor: "E4E7F4F",
-                        color: "#5A6ACF",
-                        fontWeight: 600,
+                        backgroundColor: "#E4E7F4 !important",
+                        color: "#5A6ACF !important",
+                        fontWeight: "600 !important",
                       },
                     },
                     label: {
