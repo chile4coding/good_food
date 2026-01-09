@@ -1,14 +1,8 @@
 "use client";
 import { Box, Flex, NavLink, Stack, Text } from "@mantine/core";
 import {
-  LayoutDashboard,
-  ShoppingBag,
   FileText,
   MessageSquare,
-  Settings,
-  CreditCard,
-  Users,
-  HelpCircle,
   LayoutDashboardIcon,
   ShoppingCartIcon,
   SettingsIcon,

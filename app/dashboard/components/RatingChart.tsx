@@ -148,7 +148,7 @@ const RatingCircle = ({
 };
 
 export default function YourRatingChart() {
-  const [scale, setScale] = useState(1);
+  const [scale] = useState(1);
 
   //   useEffect(() => {
   //     const handleResize = () => {
