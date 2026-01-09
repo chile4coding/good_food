@@ -19,7 +19,7 @@ export default function NavBar() {
       py="md"
       bg="white">
       {/* Search Input */}
-      <Box style={{ flex: 1, maxWidth: 500 }}>
+      <Box style={{ flex: 1, maxWidth: 625 }}>
         <Input
           placeholder="Search"
           rightSection={<Search size={16} color="#868E96" />}
