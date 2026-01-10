@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Input, Menu, Text } from "@mantine/core";
+import { Box, Burger, Button, Flex, Input, Menu, Text } from "@mantine/core";
 import {
   ChevronDownIcon,
   LogOut,
@@ -7,7 +7,15 @@ import {
   Bell,
 } from "lucide-react";
 
-export default function NavBar() {
+export default function NavBar({
+  opened,
+  toggle,
+  isMobile,
+}: {
+  opened: boolean;
+  toggle: () => void;
+  isMobile: boolean;
+}) {
   return (
     <Flex
       gap="md"
@@ -19,23 +27,31 @@ export default function NavBar() {
       py="md"
       bg="white">
       {/* Search Input */}
-      <Box style={{ flex: 1, maxWidth: 625 }}>
-        <Input
-          placeholder="Search"
-          rightSection={<Search size={16} color="#868E96" />}
-          bg="gray.0"
-          c="gray.7"
-          w={"100%"}
-          radius="md"
-          styles={{
-            input: {
-              border: "1px solid #F6F6FB",
-              "&::placeholder": {
-                color: "#ADB5BD",
+      <Box style={{ flex: 1, maxWidth: 625 }} className=" ">
+        {isMobile && (
+          <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
+        )}
+
+        {/* <Burge opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" /> */}
+
+        {!isMobile && (
+          <Input
+            placeholder="Search"
+            rightSection={<Search size={16} color="#868E96" />}
+            bg="gray.0"
+            c="gray.7"
+            w={"100%"}
+            radius="md"
+            styles={{
+              input: {
+                border: "1px solid #F6F6FB",
+                "&::placeholder": {
+                  color: "#ADB5BD",
+                },
               },
-            },
-          }}
-        />
+            }}
+          />
+        )}
       </Box>
 
       {/* Right Section - User Menu & Notification */}
@@ -135,9 +151,12 @@ export default function NavBar() {
                     />
                   </svg>
                 </Box>
-                <Text size="sm" fw={500}>
-                  Delicious Burger
-                </Text>
+
+                {!isMobile && (
+                  <Text size="sm" fw={500}>
+                    Delicious Burger
+                  </Text>
+                )}
                 <ChevronDownIcon size={14} />
               </Flex>
             </Button>

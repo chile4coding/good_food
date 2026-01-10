@@ -1,5 +1,5 @@
 "use client";
-import { Box, Flex, NavLink, Stack, Text } from "@mantine/core";
+import { Box, CloseButton, Flex, NavLink, Stack, Text } from "@mantine/core";
 import {
   FileText,
   MessageSquare,
@@ -60,7 +60,14 @@ const otherItems = [
   },
 ];
 
-export default function Sidebar() {
+export default function Sidebar({
+  toggle,
+  isMobile,
+}: {
+  opened: boolean;
+  toggle: () => void;
+  isMobile: boolean;
+}) {
   const pathname = usePathname();
   const [hoveredMenu, setHoveredMenu] = useState<string | null>(null);
   const [hoveredOther, setHoveredOther] = useState<string | null>(null);
@@ -72,7 +79,9 @@ export default function Sidebar() {
       style={{
         display: "flex",
         flexDirection: "column",
-      }}>
+      }}
+      // w={isMobile ? 250 : "100%"}
+    >
       {/* Logo Section with bottom border */}
       <Box
         px="lg"
@@ -80,24 +89,27 @@ export default function Sidebar() {
         style={{
           borderBottom: "1px solid #C8CBD9",
         }}>
-        <Flex align="center" gap="sm">
-          <Box
-            w={40}
-            h={40}
-            style={{
-              borderRadius: "50%",
-              background: "#5063F0",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}>
-            <Text c="white" fw={700} size="lg">
-              G
+        <Flex align="center" gap="sm" justify="space-between">
+          <Flex align="center" gap="sm">
+            <Box
+              w={40}
+              h={40}
+              style={{
+                borderRadius: "50%",
+                background: "#5063F0",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}>
+              <Text c="white" fw={700} size="lg">
+                G
+              </Text>
+            </Box>
+            <Text fw={600} size="md" c="#495057">
+              GOODFOOD
             </Text>
-          </Box>
-          <Text fw={600} size="md" c="#495057">
-            GOODFOOD
-          </Text>
+          </Flex>
+          {isMobile && <CloseButton size={"lg"} onClick={toggle} />}
         </Flex>
       </Box>
 
