@@ -1,8 +1,11 @@
 "use client";
 import { AppShell, Box, Grid, Skeleton, Card, Flex } from "@mantine/core";
 import Sidebar from "./dashboard/components/SideBar";
+import { useDisclosure, useMediaQuery } from "@mantine/hooks";
 
 export default function Loading() {
+  const [opened, { toggle }] = useDisclosure();
+  const isMobile = useMediaQuery("(max-width: 48em)");
   return (
     <AppShell
       padding={0}
@@ -12,7 +15,7 @@ export default function Loading() {
         collapsed: { mobile: false },
       }}>
       <AppShell.Navbar p={0} style={{ borderRight: "1px solid #F1F3F5" }}>
-        <Sidebar />
+        <Sidebar opened={opened} toggle={toggle} isMobile={isMobile} />
       </AppShell.Navbar>
 
       <AppShell.Main px={0} ml={{ base: 0, sm: 240 }}>

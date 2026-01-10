@@ -1,6 +1,6 @@
 "use client";
 import { Box, Card, Text } from "@mantine/core";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const ratingData = [
   {
